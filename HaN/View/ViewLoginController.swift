@@ -8,9 +8,15 @@
 
 import UIKit
 
-class ViewLoginController: UIViewController {
+protocol ViewLoginControllerDelegate {
+    func nextView()
+    
+}
+
+class ViewLoginController: UIViewController, ViewLoginControllerDelegate{
 
     let viewLogin = ViewLogin()
+    let viewEvents = ViewEventsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +25,10 @@ class ViewLoginController: UIViewController {
     
     
     func nextView(){
-        dismiss(animated: true, completion: nil)
-        let vc = ViewEventsController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .coverVertical
-        self.present(vc, animated: true, completion: nil)
+        
+        viewEvents.modalPresentationStyle = .fullScreen
+        viewEvents.modalTransitionStyle = .coverVertical
+        self.present(viewEvents, animated: true, completion: nil)
         
     }
 
@@ -41,6 +46,9 @@ class ViewLogin: UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var delegate: ViewLoginControllerDelegate?
+
     
     lazy var logoImg: UIImageView = {
         let view = UIImageView(frame: .zero)
@@ -97,9 +105,7 @@ class ViewLogin: UIView{
     
     
     @objc func buttonAct(sender: UIButton!){
-        let vc = ViewLoginController()
-        vc.nextView()
-        
+        self.delegate?.nextView()
     }
 
 }
@@ -152,6 +158,7 @@ extension ViewLoginController : CodeView{
     
     func additionalConfig() {
         view.backgroundColor = .gray
+        viewLogin.delegate = self
 
     }
     
