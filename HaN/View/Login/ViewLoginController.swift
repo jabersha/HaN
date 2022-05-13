@@ -25,11 +25,9 @@ class ViewLoginController: UIViewController, ViewLoginControllerDelegate{
     
     
     func nextView(){
-        
         viewEvents.modalPresentationStyle = .fullScreen
         viewEvents.modalTransitionStyle = .coverVertical
         self.present(viewEvents, animated: true, completion: nil)
-        
     }
 
 

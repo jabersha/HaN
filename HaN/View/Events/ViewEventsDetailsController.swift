@@ -1,15 +1,15 @@
 //
-//  ViewEventsController.swift
+//  ViewEventsDetailsController.swift
 //  HaN
 //
-//  Created by Jaber Shamali on 01/05/22.
+//  Created by Jaber Shamali on 12/05/22.
 //
 
 import UIKit
 import Foundation
 
 
-class ViewEventsController: UIViewController {
+class ViewEventsDetailsController: UIViewController {
 
     let viewEvents = ViewEvents()
     
@@ -20,7 +20,7 @@ class ViewEventsController: UIViewController {
 
 }
 
-class ViewEvents : UIView {
+class ViewDetailsEvents : UIView {
     
     override init(frame: CGRect = .zero){
         super.init(frame: frame)
@@ -53,13 +53,12 @@ class ViewEvents : UIView {
         tableView.backgroundColor = .systemGray5
         tableView.layer.cornerRadius = 20.0
         tableView.clipsToBounds = true
-//            tableView.register(NotaNegocicaoCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
 }
 
 
-extension ViewEventsController: CodeView {
+extension ViewEventsDetailsController: CodeView {
     func buildHierarchy() {
         view.addSubview(viewEvents)
         view.addSubview(viewEvents.logoImg)
