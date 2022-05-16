@@ -18,7 +18,6 @@
 		5497B0D8281E53F100BBCFEA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5497B0D7281E53F100BBCFEA /* SnapKit */; };
 		5497B0DA281E63D000BBCFEA /* ViewEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497B0D9281E63D000BBCFEA /* ViewEventsController.swift */; };
 		5497B0DE281E736400BBCFEA /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497B0DD281E736400BBCFEA /* Color+Extension.swift */; };
-		54FD3DCA282DD9F200E19E55 /* ViewEventsDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FD3DC9282DD9F200E19E55 /* ViewEventsDetailsController.swift */; };
 		54FD3DCD282DDA6300E19E55 /* ViewEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FD3DCC282DDA6300E19E55 /* ViewEmployeeController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +34,6 @@
 		5497B0D3281E536C00BBCFEA /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		5497B0D9281E63D000BBCFEA /* ViewEventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventsController.swift; sourceTree = "<group>"; };
 		5497B0DD281E736400BBCFEA /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		54FD3DC9282DD9F200E19E55 /* ViewEventsDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventsDetailsController.swift; sourceTree = "<group>"; };
 		54FD3DCC282DDA6300E19E55 /* ViewEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEmployeeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				5497B0D9281E63D000BBCFEA /* ViewEventsController.swift */,
-				54FD3DC9282DD9F200E19E55 /* ViewEventsDetailsController.swift */,
 				54000F5B2831E4B0003E097D /* ViewEventsDetailController.swift */,
 			);
 			path = Events;
@@ -208,7 +205,6 @@
 				54FD3DCD282DDA6300E19E55 /* ViewEmployeeController.swift in Sources */,
 				5497B0BE281E535700BBCFEA /* SceneDelegate.swift in Sources */,
 				54000F5C2831E4B0003E097D /* ViewEventsDetailController.swift in Sources */,
-				54FD3DCA282DD9F200E19E55 /* ViewEventsDetailsController.swift in Sources */,
 				545E3454281E794200ED4067 /* ViewLoginController.swift in Sources */,
 				5497B0DA281E63D000BBCFEA /* ViewEventsController.swift in Sources */,
 				5497B0D4281E536C00BBCFEA /* CodeView.swift in Sources */,
