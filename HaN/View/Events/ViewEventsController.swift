@@ -8,23 +8,33 @@
 import UIKit
 
 protocol ViewEventsControllerDelegate {
-//    func showOptions()
-    
+    func newEvent()
+    func newEmployee()
 }
 
 class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     
-
     let viewEvents = ViewEvents()
+    let viewEventsDetail = ViewEventsDetailController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
-//    func showOptions() {
-//    }
 
+    func newEvent() {
+        
+        viewEventsDetail.modalPresentationStyle = .overFullScreen
+        viewEventsDetail.modalTransitionStyle = .coverVertical
+        navigationController?.pushViewController(viewEventsDetail, animated: true)
+        
+    }
+    
+    func newEmployee() {
+        
+    }
+    
 }
 
 
@@ -54,7 +64,6 @@ class ViewEvents : UIView {
         view.setTitle("+", for: .normal)
         view.titleLabel?.font = UIFont(name: "Arial", size: 90)
         view.addTarget(self, action: #selector(buttonShow), for: .touchUpInside)
-
         
         return view
     }()
@@ -78,6 +87,8 @@ class ViewEvents : UIView {
         view.backgroundColor =  UIColor.init(hexString: "#5f2539")
         view.layer.opacity = 0.8
         view.layer.cornerRadius = 15.0
+        view.isHidden = true
+
         
         return view
     }()
@@ -86,7 +97,8 @@ class ViewEvents : UIView {
         let view = UIButton(frame: .zero)
         view.setTitle("Evento", for: .normal)
         view.tintColor = .white
-        
+        view.addTarget(self, action: #selector(buttonNewEvent), for: .touchUpInside)
+
         return view
     }()
     
@@ -94,13 +106,27 @@ class ViewEvents : UIView {
         let view = UIButton(frame: .zero)
         view.setTitle("Funcionário", for: .normal)
         view.tintColor = .white
+        view.addTarget(self, action: #selector(buttonNewEmployee), for: .touchUpInside)
 
         return view
     }()
     
+    
     @objc func buttonShow(sender: UIButton!){
         
-//        self.delegate?.showOptions()
+        buttonStackView.isHidden = !buttonStackView.isHidden
+    }
+    
+    @objc func buttonNewEvent(sender: UIButton!){
+        
+        self.delegate?.newEvent()
+        buttonStackView.isHidden = !buttonStackView.isHidden
+
+    }
+    
+    @objc func buttonNewEmployee(sender: UIButton!){
+        
+        buttonStackView.isHidden = !buttonStackView.isHidden
     }
 }
 
@@ -147,6 +173,7 @@ extension ViewEventsController: CodeView {
     func additionalConfig() {
         viewEvents.buttonStackView.isHidden = true
         view.backgroundColor = UIColor.init(hexString: "#cbcbc9")
+        viewEvents.delegate = self
     }
     
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ViewLoginControllerDelegate {
-    func nextView()
+    func eventsView()
     
 }
 
@@ -24,10 +24,13 @@ class ViewLoginController: UIViewController, ViewLoginControllerDelegate{
     }
     
     
-    func nextView(){
-        viewEvents.modalPresentationStyle = .fullScreen
-        viewEvents.modalTransitionStyle = .coverVertical
-        self.present(viewEvents, animated: true, completion: nil)
+    func eventsView(){
+        
+        let navVC = UINavigationController(rootViewController: viewEvents)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .coverVertical
+        self.present(navVC, animated: true, completion: nil)
+        
     }
 
 
@@ -103,7 +106,7 @@ class ViewLogin: UIView{
     
     
     @objc func buttonAct(sender: UIButton!){
-        self.delegate?.nextView()
+        self.delegate?.eventsView()
     }
 
 }
