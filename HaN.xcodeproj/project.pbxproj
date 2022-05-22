@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		54000F5C2831E4B0003E097D /* ViewEventsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54000F5B2831E4B0003E097D /* ViewEventsDetailController.swift */; };
 		545E3454281E794200ED4067 /* ViewLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545E3453281E794200ED4067 /* ViewLoginController.swift */; };
+		54609EC32839DDC3007C63A1 /* CamposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54609EC22839DDC3007C63A1 /* CamposView.swift */; };
 		5497B0BC281E535700BBCFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497B0BB281E535700BBCFEA /* AppDelegate.swift */; };
 		5497B0BE281E535700BBCFEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497B0BD281E535700BBCFEA /* SceneDelegate.swift */; };
 		5497B0C6281E535700BBCFEA /* HaN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5497B0C4281E535700BBCFEA /* HaN.xcdatamodeld */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		54000F5B2831E4B0003E097D /* ViewEventsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventsDetailController.swift; sourceTree = "<group>"; };
 		545E3453281E794200ED4067 /* ViewLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoginController.swift; sourceTree = "<group>"; };
+		54609EC22839DDC3007C63A1 /* CamposView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamposView.swift; sourceTree = "<group>"; };
 		5497B0B8281E535700BBCFEA /* HaN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HaN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5497B0BB281E535700BBCFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5497B0BD281E535700BBCFEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				5497B0D3281E536C00BBCFEA /* CodeView.swift */,
 				5497B0DD281E736400BBCFEA /* Color+Extension.swift */,
+				54609EC22839DDC3007C63A1 /* CamposView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				54000F5C2831E4B0003E097D /* ViewEventsDetailController.swift in Sources */,
 				545E3454281E794200ED4067 /* ViewLoginController.swift in Sources */,
 				5497B0DA281E63D000BBCFEA /* ViewEventsController.swift in Sources */,
+				54609EC32839DDC3007C63A1 /* CamposView.swift in Sources */,
 				5497B0D4281E536C00BBCFEA /* CodeView.swift in Sources */,
 				5497B0C6281E535700BBCFEA /* HaN.xcdatamodeld in Sources */,
 			);
