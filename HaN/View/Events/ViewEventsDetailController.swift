@@ -19,11 +19,10 @@ class ViewEventsDetailController: UIViewController, ViewEventsDetailControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
+        configKeyboard()
         loadTextField()
         setupView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisapear), name: UIResponder.keyboardDidHideNotification, object: nil)
 
     }
         
@@ -300,11 +299,24 @@ extension ViewEventsDetailController: UITextFieldDelegate{
 
 extension ViewEventsDetailController{
 
+    func configKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisapear), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+    }
+    
     @objc func keyboardApear(){
         self.viewEventsDetail.contentSize.height = self.viewEventsDetail.frame.height + 250
     }
     
     @objc func keyboardDisapear(){
         self.viewEventsDetail.contentSize.height = self.viewEventsDetail.frame.height - 250
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
