@@ -32,6 +32,9 @@ class ViewEventsDetailController: UIViewController, ViewEventsDetailControllerDe
         backButton.title = "Eventos"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
+        let button = UIBarButtonItem(barButtonSystemItem: .save , target: self, action: nil)
+        navigationItem.rightBarButtonItem = button
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "han")

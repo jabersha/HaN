@@ -16,6 +16,7 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     
     let viewEvents = ViewEvents()
     let viewEventsDetail = ViewEventsDetailController()
+    let viewEmployeeDetail = ViewEmployeeDetailController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     
 
     func newEvent() {
-        
         viewEventsDetail.modalPresentationStyle = .overFullScreen
         viewEventsDetail.modalTransitionStyle = .coverVertical
         navigationController?.pushViewController(viewEventsDetail, animated: true)
@@ -32,7 +32,9 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     }
     
     func newEmployee() {
-        
+        viewEventsDetail.modalPresentationStyle = .overFullScreen
+        viewEventsDetail.modalTransitionStyle = .coverVertical
+        navigationController?.pushViewController(viewEmployeeDetail, animated: true)
     }
     
 }
@@ -55,6 +57,12 @@ class ViewEvents : UIView {
         let view = UIImageView(frame: .zero)
         view.image = UIImage(named: "han")
         return view
+    }()
+    
+    lazy var logoutBtn: UIButton = {
+        let btn = UIButton(frame: .zero)
+        btn.setImage(UIImage(named: "logout"), for: .normal)
+        return btn
     }()
     
     
@@ -126,6 +134,7 @@ class ViewEvents : UIView {
     
     @objc func buttonNewEmployee(sender: UIButton!){
         
+        self.delegate?.newEmployee()
         buttonStackView.isHidden = !buttonStackView.isHidden
     }
 }
@@ -134,6 +143,7 @@ class ViewEvents : UIView {
 extension ViewEventsController: CodeView {
     func buildHierarchy() {
         view.addSubview(viewEvents)
+        view.addSubview(viewEvents.logoutBtn)
         view.addSubview(viewEvents.logoImg)
         view.addSubview(viewEvents.tableEvents)
         view.addSubview(viewEvents.newEventBtn)
@@ -147,6 +157,12 @@ extension ViewEventsController: CodeView {
             make.top.equalToSuperview().offset(35)
             make.height.width.equalTo(60)
             make.centerX.equalToSuperview()
+        }
+        
+        viewEvents.logoutBtn.snp.makeConstraints{ make in
+            make.centerY.equalTo(viewEvents.logoImg)
+            make.right.equalToSuperview().inset(20)
+            make.height.width.equalTo(25)
         }
         
         viewEvents.tableEvents.snp.makeConstraints{ make in
