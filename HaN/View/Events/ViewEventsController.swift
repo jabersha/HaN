@@ -10,6 +10,7 @@ import UIKit
 protocol ViewEventsControllerDelegate {
     func newEvent()
     func newEmployee()
+    func logout()
 }
 
 class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
@@ -20,7 +21,9 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNav()
         setupView()
+
 
     }
     
@@ -36,6 +39,33 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
         viewEventsDetail.modalPresentationStyle = .overFullScreen
         viewEventsDetail.modalTransitionStyle = .coverVertical
         navigationController?.pushViewController(viewEmployeeDetail, animated: true)
+    }
+    
+    @objc func logout(){
+        dismiss(animated: true)
+    }
+    
+    func configureNav(){
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            image: UIImage(named: "logout")?.withRenderingMode(.alwaysOriginal),
+//            style: .plain, target: self, action: #selector(logout))
+        
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "han")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        
+        let logoutBtn = UIButton(type: .custom)
+        logoutBtn.setImage(UIImage(named:"logout"), for: .normal)
+        logoutBtn.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        let menuBarItem = UIBarButtonItem(customView: logoutBtn)
+        menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 22).isActive = true
+
+        navigationItem.rightBarButtonItem = menuBarItem
+
     }
     
 }
@@ -63,6 +93,7 @@ class ViewEvents : UIView {
     lazy var logoutBtn: UIButton = {
         let btn = UIButton(frame: .zero)
         btn.setImage(UIImage(named: "logout"), for: .normal)
+        btn.addTarget(self, action: #selector(buttonLogout), for: .touchUpInside)
         return btn
     }()
     
@@ -138,14 +169,18 @@ class ViewEvents : UIView {
         self.delegate?.newEmployee()
         buttonStackView.isHidden = !buttonStackView.isHidden
     }
+    
+    @objc func buttonLogout(sender: UIButton!){
+        
+        self.delegate?.logout()
+    }
+    
 }
 
 
 extension ViewEventsController: CodeView {
     func buildHierarchy() {
         view.addSubview(viewEvents)
-        view.addSubview(viewEvents.logoutBtn)
-        view.addSubview(viewEvents.logoImg)
         view.addSubview(viewEvents.tableEvents)
         view.addSubview(viewEvents.newEventBtn)
         view.addSubview(viewEvents.buttonStackView)
@@ -154,20 +189,8 @@ extension ViewEventsController: CodeView {
     
     func configConstraints() {
         
-        viewEvents.logoImg.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(35)
-            make.height.width.equalTo(60)
-            make.centerX.equalToSuperview()
-        }
-        
-        viewEvents.logoutBtn.snp.makeConstraints{ make in
-            make.centerY.equalTo(viewEvents.logoImg)
-            make.right.equalToSuperview().inset(20)
-            make.height.width.equalTo(25)
-        }
-        
         viewEvents.tableEvents.snp.makeConstraints{ make in
-            make.top.equalTo(viewEvents.logoImg.snp.bottom).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.bottom.equalTo(viewEvents.newEventBtn.snp.top).offset(15)
             make.left.right.equalToSuperview().offset(20).inset(20)
         }
