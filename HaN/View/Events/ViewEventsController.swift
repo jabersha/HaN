@@ -21,6 +21,7 @@ class ViewEventsController: UIViewController, ViewEventsControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+
     }
     
 
@@ -82,7 +83,7 @@ class ViewEvents : UIView {
         tableView.backgroundColor = .systemGray5
         tableView.layer.cornerRadius = 20.0
         tableView.clipsToBounds = true
-//            tableView.register(NotaNegocicaoCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(EventsCell.self, forCellReuseIdentifier: EventsCell.identifier)
         return tableView
     }()
     
@@ -187,9 +188,35 @@ extension ViewEventsController: CodeView {
     }
     
     func additionalConfig() {
-        viewEvents.buttonStackView.isHidden = true
         view.backgroundColor = UIColor.init(hexString: "#cbcbc9")
+        viewEvents.buttonStackView.isHidden = true
         viewEvents.delegate = self
+        viewEvents.tableEvents.delegate = self
+        viewEvents.tableEvents.dataSource = self
+
+    }
+    
+}
+
+extension ViewEventsController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: EventsCell.identifier, for: indexPath) as? EventsCell else {
+            return UITableViewCell()
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     
